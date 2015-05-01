@@ -1,6 +1,17 @@
 
+/******
+  *
+  * This is Just For Test...
+  * Author: By Nuos
+  *
+*****/
+
+#include <stdlib.h>
+
 int main (int iargc, char** cppargv)
 {
-  std::cout <<"Hello GitHub "<<std::endl;
+  printf(" %s \n","Hello GitHub");
+  
+  system("pause");
   return 0;
 }
