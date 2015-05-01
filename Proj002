@@ -1,1 +1,40 @@
 
+
+/*****
+   uses the formula oC=(5/9)(oF-32) to print the following table of Fahrenheit temperatures
+              1 -17
+              20 -6
+              40 4
+              60 15
+              80 26
+              100 37
+              120 48
+              140 60
+              160 71
+              180 82
+              200 93
+              220 104
+              240 115
+              260 126
+              280 137
+              300 148
+*******/
+#include <stdio.h>
+#include <stdlib.h>
+const float con = 5.0f /9.0f;
+
+int main(int iargc, char** cppargv)
+{
+	
+	int fahr = 0, celsius = 0;
+	int fLower = 0, fUpper = 300, fStep = 20;
+	for (int fLower = 0; fahr <= fUpper; fahr += fStep)
+	{
+		celsius = con * (fahr - 32);
+		printf("%d fahrenheit = %d Celsius\n", fahr, celsius);
+	}
+
+	printf("[%s]\n", "Hello GitHub");
+	system("pause");
+	return 0;
+}
