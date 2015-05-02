@@ -1,0 +1,64 @@
+/*********************************************
+  Given a number ranging From 0 ~ 256,
+  figure out the numbers of every bit, such as              % 2       / 2
+  1               int iNum = 1      ->  ret = 1             = 1       = 0
+  10              int iNum = 2      ->  ret = 1             = 0       = 1
+  11              int iNum = 3      ->  ret = 2             = 1       = 1
+  100             int iNum = 4      ->  ret = 1             = 0
+  101             int iNum = 5      ->  ret = 2
+  1111 1111       int iNum = 255    ->  ret = 8
+  1 0000 0000     int iNum = 256    ->  ret = 1  
+*******************************************************/
+
+#include <iostream>
+
+//To Be Continued.....
+int meth0Count1OfVal(int val)
+{
+  int iCounter = 0;
+  while (val)
+  {
+    if (val % 2 == 1)
+    {
+      ++iCounter;
+    }
+    val /= 2;
+  }
+  return iCounter;
+}
+
+//To Be Continued.....
+// Bitwise Operator
+int meth1Count1OfVal(int val)
+{
+  int iCounter = 0;
+  while (val)
+  {
+    iCounter += val & 0x01;//*****
+    val >> 1;
+  }
+  return iCounter;
+}
+
+//To Be Continued.....
+int meth2Count1OfVal(int val)
+{
+  int iCounter = 0;
+  while (val)
+  {
+    val &= (val - 0x01);
+    ++iCounter;
+  }
+  return iCounter;
+}
+
+int main (int iargc, char** cppargv)
+{
+  int iVal = 0;
+  std::cout << "input an integer number:" << std::endl;
+  std::cin >> iVal;
+  //
+  
+  system("pause");
+  return 0;
+}
