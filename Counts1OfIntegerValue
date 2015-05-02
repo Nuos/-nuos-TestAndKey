@@ -18,7 +18,7 @@ int meth0Count1OfVal(int val)
   int iCounter = 0;
   while (val)
   {
-    if (val % 2 == 1)
+    if (val % 2 == 1)// lowerest-bit of the current binary number is 1
     {
       ++iCounter;
     }
