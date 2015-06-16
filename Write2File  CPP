@@ -1,0 +1,25 @@
+
+#include  <iostream>
+#include  <fstream>
+
+using namespace std;
+
+int main (int iargc, char** cppargv, char** environ)
+{
+  std::string strcontent = "Line1: Hello, This is a test file for writing contents to file\n";
+  strcontent += "Line2: Create an ofstream object, and then open a file named ofw2f.txt\n";
+  strcontent += "Line3: Then we write the contents with ofstream object to the specified file\n";
+  
+  char* pfilename = "ofw2f.txt";
+  
+  ofstream  ofw2f ( pfilename, ios::app | ios::out);
+  if (ofw2f.is_open()) {
+    ofw2f << strcontent.c_str();
+    ofw2f.close();
+  }
+  else  {
+    std::cout << "Unable to open file: " << pfilename;
+  }
+  
+  return 0;
+}
