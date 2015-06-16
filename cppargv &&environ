@@ -1,0 +1,28 @@
+/****
+  Windows7  64bit
+  Visual Studio 2013
+  environment variables output..
+***/
+
+#include <stdio.h>
+
+int main (int iargc, char** cppargv, char** environ)
+{
+  //  Output all the parameters of ??? um, what the variable is called?? the meanning ?? any advice!! Thank you!
+  int iint = 0;
+  while ( NULL != *cppargv)
+  {
+    printf("%d | %d=> %s\n", iargc, iint++, *cppargv++);
+  }
+  
+  
+  //  Output all environment variables
+  iint = 0;
+  char** env = environ;
+  while ( NULL != *env)
+  {
+    printf ( "d-> %s \n", iint++, *env++);
+  }
+  
+  return 0;
+}
