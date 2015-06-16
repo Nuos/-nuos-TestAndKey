@@ -1,0 +1,43 @@
+/***************************************************************************************************
+
+  #include  <fstream>
+  void  open(const char* filename);
+  void  open(const char* filename, openmode mode = default_mode);
+  
+  The function open() is used with file streams.
+  It opens filename and associates it with the current stream.
+  The optional io-stream-mode-flag mode defaults to 
+          ios::in for ifstream,
+          ios::out for ofstream, and
+          ios::in|ios::out for fstream.
+  If open() fails, the resulting stream will evaluate to false when used in a Boolean expression.
+  
+*********************************************************************************************************/
+
+#include  <iostream>
+#include  <fstream>
+#include  <string>
+
+using namespace std;
+
+int main (int iargc, char** argv, char** environ)
+{
+  std::string line;
+  char* filename = "filewithdata.txt";
+  ifstream  ifRFF(filename);
+  if (ifRFF.is_open())
+  {
+    while (std::getline(ifRFF, line))
+    {
+      std::cout << line <<'\n';
+    }
+    
+    ifRFF.close();
+  }
+  else 
+  {
+    std::cout << "Unable to open file";
+  }
+  
+  return 0;
+}
