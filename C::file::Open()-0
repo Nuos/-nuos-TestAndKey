@@ -1,0 +1,31 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main (int iargc, char** cppargv, char** cppenviron)
+{
+	FILE	*ifp, *ofp;
+	char outputfn[] = "D:\\out.list";
+	char inputfn[] = "D:\\in.list";
+	
+	//  The input file about to open for reading must already exist.
+	ifp = fopen(inputfn, "r+");
+	if (NULL == ifp) {
+		fprintf (stderr, "can't open input file in.list...\n\n");
+		exit(1);
+	} else {
+		printf ("read contents from in.list file\n");
+	}
+	
+	//  output file about to open for writing does not have to exist..
+	ofp = fopen (outputfn, "w+");
+	if (NULL == ofp) {
+		fprintf (stderr, "can't open output file out.list....\n\n");
+		exit(1);
+	} else {
+		printf ("write contents from out.list file\n");
+	}
+	
+	system("pause");
+	return 0;
+}
