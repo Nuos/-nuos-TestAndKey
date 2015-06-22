@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main (int iargc, char** cppargv, char** cppenviron)
+{
+	FILE* pf;
+	long lsize;
+	char* buffer;
+	size_t result;
+	
+	//  first, open the source file "D:\\file.txt" with mode of "rb+"
+	//  then, test pointer pf==NULL
+	pf = fopen("D:\\file.txt", "rb+");
+	if (NULL == pf) {
+		fputs ("File Open error", stderr);
+		exit(1);
+	}
+	
+	//  Second, relocate to the beginning of the file
+	//  then, test the sizeof the file , FOR BINARY STREAMS, this is the number of bytes from the beginning of the file..
+	fseek (pf, 0, SEEK_END);
+	lsize = ftell (pf);// bytes
+	rewind(pf);
+	
+	//
+	buffer = (char*) malloc (sizeof(char)*lsize);
+	if (NULL == buffer) {
+		fputs ("Memory error", stderr);
+		exit(2);
+	}
+	
+	//
+	result = fread(buffer, 1, lsize, pf) ;
+	if (result != lsize) {
+		fputs ("Reading error", stderr);
+		exit(3);
+	}
+	
+	FILE* opf;
+	opf = fopen("D:\\filecopy.txt","wb+");
+	if (NULL == opf) {
+		fputs("File Open error",stderr);
+		exit(1);
+	}
+	fwrite (buffer, sizeof(char), lsize, opf);
+	
+	
+	fclose(opf);
+	fclose(pf);
+	if (NULL != buffer) {
+		free (buffer);
+	}
+	
+	system("pause");
+	return 0;
+}
