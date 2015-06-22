@@ -26,6 +26,20 @@ int main (int iargc, char** cppargv, char** cppenviron)
 		printf ("write contents from out.list file\n");
 	}
 	
+	/*	input.list
+	 *	foo 110
+	 *	bar 120
+	 *	nane 210
+	*/
+	//	read from input.list file, and then write the stream into output.list file
+	char username[9];
+	int score;
+	while (fscanf (ifp, "%s %d", username, &score) != EOF) {
+		fprintf (ofp, "%s %d\n", username, score);
+		printf ("%s %d\n", username, score);
+	}
+	
+	
 	system("pause");
 	return 0;
 }
