@@ -34,7 +34,13 @@ int main (int iargc, char** cppargv, char** cppenviron)
 	//	read from input.list file, and then write the stream into output.list file
 	char username[9];
 	int score;
-	while (fscanf (ifp, "%s %d", username, &score) != EOF) {
+	
+	// used for judging whether reaching the endOfFile...
+	while (!feof(ifp)) {
+		// used for testing the number of values we expected to be read by fscanf()
+		if ( 2 != fscanf (ifp, "%s %d", username, &score)) {	
+			break;
+		}
 		fprintf (ofp, "%s %d\n", username, score);
 		printf ("%s %d\n", username, score);
 	}
