@@ -1,0 +1,49 @@
+
+#include <time.h>
+#include <string>
+int getUTC_LocalTm_main();
+
+
+int main()
+{
+    getUTC_LocalTm_main();
+    system("pause");
+    return 0;
+}
+
+inline std::string int2string(int val)
+{
+    std::string strRet = "";
+    while (val) {
+        char ch[2] = { '0' + char(val % 10), 0 };
+        strRet = std::string(ch) + strRet;
+        val /= 10;
+    }
+
+    return strRet;
+}
+bool littleEndian()
+{
+    short sdata = 1;
+    return ((char*)&sdata)[0] == 1;
+}
+int getUTC_LocalTm_main()
+{
+    time_t tlm = time(NULL);
+    struct tm*  pltm = new struct tm();
+    localtime_s(pltm, &tlm);
+    unsigned int ibuf = 0;
+    if (littleEndian()){
+        ibuf |= pltm->tm_year + 1900 - 1970;
+        ibuf <<= 4;ibuf |= pltm->tm_mon + 1;
+        ibuf <<= 6;ibuf |= pltm->tm_mday;
+        ibuf <<= 6;ibuf |= pltm->tm_hour;
+        ibuf <<= 8;ibuf |= pltm->tm_min;
+    }
+    printf("%d\n", ibuf);
+    std::string strbuf = int2string(ibuf);
+    printf("%s\n", strbuf.c_str());
+
+    system("pause");
+    return 0;
+}
