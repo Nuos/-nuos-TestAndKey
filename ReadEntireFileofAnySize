@@ -1,0 +1,40 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main () 
+{
+	FILE* rm;
+	FILE* wm;
+	char buf[512];
+	int res = 0;
+	char* infname = "stl.txt";
+	char* outfname = "stlcopy.txt";
+
+	printf("\r\nReading from Files in C\r\n");
+	rm = fopen(infname, "rb+");
+	wm = fopen(outfname,"ab+");
+	if (NULL != rm) {
+		while (!feof(rm)) {
+			res = fread(buf, 1, sizeof(buf), rm);
+			fwrite (buf, 1, sizeof(buf), wm);
+			//buf[res] = 0;
+			//printf("%s",buf);
+		}
+		fclose(rm);
+
+	} else {
+		printf("File not found.\r\n");
+	}
+
+	system("pause");
+	return 0;
+}
+/*********************************************************
+ *	Reading the Entire File
+ *	1)  calculate the size of the file to be read.
+ *	2)  use malloc() to allocate an area of memory large enough to hold the data....
+ *	3)  call fread() specifying the pointer return by malloc() as the destination and the size of the file as the nmemb argument.
+ *	4)	CLOSE the file when finishing working with the data.
+ *	5)	RELEASE the memory allocated by malloc() when finishing working with the data..
+ ********************************************************************************************/
