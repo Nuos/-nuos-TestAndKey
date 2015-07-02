@@ -3,7 +3,7 @@
  *
  *  size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream);
 */
-//#include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h> //  system()??
 
 int main (int iargc, char** cppargv, char** envrion)
