@@ -1,0 +1,38 @@
+
+/*  Visual Studio 2010 \ windows7 64bit
+ *
+ *  size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream);
+*/
+//#include <stdio.h>
+#include <stdlib.h> //  system()??
+
+int main (int iargc, char** cppargv, char** envrion)
+{
+  FILE* rm;
+  char buf[201];
+  
+  printf("\r\nReading from Files in C\r\n");
+  
+  rm = fopen("stl.txt", "rb+"); //  file of stl.txt must exist....
+  if (NULL != rm) {
+    fread(buf, 1, 200, rm);
+    buf[sizeof(buf) - 1] = 0;
+    printf("%s", buf);
+    fclose(rm);
+  } else {
+    printf("File not Found. \r\n");
+  }
+  
+  system("pause");
+  return 0;
+}
+/**
+ *  There are a few other important points to note in the code above.
+ *
+ *  The return value of fopen() is checked against null to ensure that the file was opened successfully.
+ *  The code does not check that the call to fread() was successful and whether it returned the number of characters requested.
+ *  The final element in the buffer array is set to 0 to ensure that the string is null-terminated, 
+ *    prior to sending the result to the console using printf().
+ **/
+ 
+ 
