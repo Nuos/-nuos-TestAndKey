@@ -1,5 +1,7 @@
 
-/*  Visual Studio 2010 \ windows7 64bit
+/*  source code from url: https://blog.udemy.com/fread-c/
+ *
+ *  Visual Studio 2010 \ windows7 64bit
  *
  *  size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream);
 */
