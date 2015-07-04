@@ -17,7 +17,7 @@ int main ()
 	if (NULL != rm) {
 		while (!feof(rm)) {
 			res = fread(buf, 1, sizeof(buf), rm);
-			fwrite (buf, 1, sizeof(buf), wm);
+			fwrite (buf, 1, res, wm);
 			//buf[res] = 0;
 			//printf("%s",buf);
 		}
