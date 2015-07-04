@@ -6,7 +6,7 @@ int main ()
 {
 	FILE* rm;
 	FILE* wm;
-	char buf[512];
+	char buf[1024 * 8];
 	int res = 0;
 	char* infname = "stl.txt";
 	char* outfname = "stlcopy.txt";
